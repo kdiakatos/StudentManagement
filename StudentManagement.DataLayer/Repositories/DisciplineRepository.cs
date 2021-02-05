@@ -29,6 +29,7 @@ namespace StudentManagement.DataLayer.Repositories
             {
                 dbRecord.DisciplineName = discipline.DisciplineName;
                 dbRecord.ProfesorName = discipline.ProfesorName;
+                dbRecord.Score = discipline.Score;
                 await _smContext.SaveChangesAsync();
             }
             return discipline;
