@@ -2,8 +2,6 @@
 using StudentManagement.DataLayer.Entities;
 using StudentManagement.DataLayer.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentManagement.DataLayer.Repositories
