@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/StudentManagement.DataLayer/Repositories/SemesterRepository.cs
