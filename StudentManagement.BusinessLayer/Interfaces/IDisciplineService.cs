@@ -9,7 +9,7 @@ namespace StudentManagement.BusinessLayer.Interfaces
     {
         Task<DisciplineModel> CreateDisciplineAsync(DisciplineModel discipline);
         Task DeleteDisciplineAsync(Guid id);
-        Task<List<DisciplineModel>> GetAllSalesAsync();
+        Task<List<DisciplineModel>> GetAllDisciplineAsync();
         Task<DisciplineModel> GetDisciplineByIdAsync(Guid id);
         Task<DisciplineModel> UpdateDisciplineAsync(DisciplineModel discipline);
     }

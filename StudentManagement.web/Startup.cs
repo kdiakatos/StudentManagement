@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using StudentManagement.BusinessLayer.Interfaces;
+using StudentManagement.BusinessLayer.Services;
 using StudentManagement.BusinessLayer.Utilities;
 using StudentManagement.DataLayer;
 using StudentManagement.DataLayer.Interfaces;
@@ -36,6 +38,10 @@ namespace StudentManagement.web
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ISemesterRepository, SemesterRepository>();
             services.AddScoped<IDisciplineRepository, DisciplineRepository>();
+
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ISemesterService, SemesterService>();
+            services.AddScoped<IDisciplineService, DisciplineService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

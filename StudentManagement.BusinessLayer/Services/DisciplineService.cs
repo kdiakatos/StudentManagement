@@ -47,7 +47,7 @@ namespace StudentManagement.BusinessLayer.Services
             await _disciplineRepository.DeleteDisciplineAsync(id);
         }
 
-        public async Task<List<DisciplineModel>> GetAllSalesAsync()
+        public async Task<List<DisciplineModel>> GetAllDisciplineAsync()
         {
             return _mapper.Map<List<DisciplineModel>>(await _disciplineRepository.GetAllDisciplineAsync());
         }
