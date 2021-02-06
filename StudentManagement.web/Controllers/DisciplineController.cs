@@ -39,23 +39,23 @@ namespace StudentManagement.Api.Controllers
 
         // POST api/<DisciplineController>
         [HttpPost]
-        public void Post([FromBody] DisciplineModel discipline)
+        public void PostAsync([FromBody] DisciplineModel discipline)
         {
             _disciplineService.CreateDisciplineAsync(discipline);
         }
 
         // PUT api/<DisciplineController>/5
         [HttpPut("{id}")]
-        public void Put([FromBody] DisciplineModel discipline)
+        public async Task PutAsync([FromBody] DisciplineModel discipline)
         {
-            _disciplineService.UpdateDisciplineAsync(discipline);
+           await _disciplineService.UpdateDisciplineAsync(discipline);
         }
 
         // DELETE api/<DisciplineController>/5
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            _disciplineService.DeleteDisciplineAsync(id);
+           await _disciplineService.DeleteDisciplineAsync(id);
         }
     }
 }

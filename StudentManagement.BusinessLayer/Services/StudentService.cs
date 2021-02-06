@@ -21,33 +21,42 @@ namespace StudentManagement.BusinessLayer.Services
             _studentRepository = studentRepository;
         }
 
-        public async Task<StudentModel> CreateSemesterAsync(StudentModel student)
+        public async Task<StudentModel> CreateStudentAsync(StudentModel student)
         {
-            var studentEntity = _mapper.Map<Student>(student);
-            var result = await _studentRepository.CreateStudentAsynd(studentEntity);
-            student = _mapper.Map<StudentModel>(result);
-            return student;
+            try
+            {
+                var studentEntity = _mapper.Map<Student>(student);
+                var result = await _studentRepository.CreateStudentAsynd(studentEntity);
+                student = _mapper.Map<StudentModel>(result);
+                return student;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
-        public async Task<StudentModel> UpdateSemesterAsync(StudentModel student)
+        public async Task<StudentModel> UpdateStudentAsync(StudentModel student)
         {
             var studentEntity = _mapper.Map<Student>(student);
             await _studentRepository.UpdateStudentAsync(studentEntity);
             return student;
         }
 
-        public async Task<StudentModel> GetSemesterByIdAsync(Guid id)
+        public async Task<StudentModel> GetStudentByIdAsync(Guid id)
         {
             var result = await _studentRepository.GetStudentByIdAsync(id);
             return _mapper.Map<StudentModel>(result);
         }
 
-        public async Task DeleteSemesterAsync(Guid id)
+        public async Task DeleteStudentAsync(Guid id)
         {
             await _studentRepository.DeleteStudentAsync(id);
         }
 
-        public async Task<List<StudentModel>> GetAllSemesterAsync()
+        public async Task<List<StudentModel>> GetAllStudentAsync()
         {
             return _mapper.Map<List<StudentModel>>(await _studentRepository.GetAllStudentAsync());
         }
