@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,7 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using StudentManagement.BusinessLayer.Utilities;
 using StudentManagement.DataLayer;
+using StudentManagement.DataLayer.Interfaces;
+using StudentManagement.DataLayer.Repositories;
 
 namespace StudentManagement.web
 {
@@ -22,6 +26,17 @@ namespace StudentManagement.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SMContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            var mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ISemesterRepository, SemesterRepository>();
+            services.AddScoped<IDisciplineRepository, DisciplineRepository>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
