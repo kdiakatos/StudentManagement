@@ -1,5 +1,6 @@
 ﻿using StudentManagement.DataLayer.Entities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StudentManagement.DataLayer.Interfaces
@@ -10,5 +11,6 @@ namespace StudentManagement.DataLayer.Interfaces
         Task DeleteSemesterAsync(Guid id);
         Task<Semester> GetSemesterByIdAsync(Guid id);
         Task<Semester> UpdateSemesterAsync(Semester semester);
+        Task<List<Semester>> GetAllSemesterAsync();
     }
 }
