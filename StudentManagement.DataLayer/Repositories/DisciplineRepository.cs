@@ -2,6 +2,7 @@
 using StudentManagement.DataLayer.Entities;
 using StudentManagement.DataLayer.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StudentManagement.DataLayer.Repositories
@@ -45,6 +46,11 @@ namespace StudentManagement.DataLayer.Repositories
             var dbRecord = await _smContext.Disciplines.FirstOrDefaultAsync(x => x.DisciplineId == id);
             _smContext.Remove(dbRecord);
             await _smContext.SaveChangesAsync();
+        }
+
+        public async Task<List<Discipline>> GetAllDisciplineAsync()
+        {
+            return await _smContext.Disciplines.ToListAsync();
         }
     }
 }
