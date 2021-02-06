@@ -24,16 +24,16 @@ namespace StudentManagement.Api.Controllers
 
         // GET: api/<StudentController>
         [HttpGet]
-        public Task<List<StudentModel>> Get()
+        public async Task<List<StudentModel>> GetGetAsync()
         {
-            return _studentService.GetAllStudentAsync();
+            return await _studentService.GetAllStudentAsync();
         }
 
         // GET api/<StudentController>/5
         [HttpGet("{id}")]
-        public Task<StudentModel> Get(Guid id)
+        public async Task<StudentModel> GetAsync(Guid id)
         {
-            return _studentService.GetStudentByIdAsync(id);
+            return await _studentService.GetStudentByIdAsync(id);
         }
 
         // POST api/<StudentController>

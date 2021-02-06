@@ -24,24 +24,24 @@ namespace StudentManagement.Api.Controllers
 
         // GET: api/<DisciplineController>
         [HttpGet]
-        public Task<List<DisciplineModel>> Get()
+        public async Task<List<DisciplineModel>> GetAsync()
         {
-            return _disciplineService.GetAllDisciplineAsync();
+            return await _disciplineService.GetAllDisciplineAsync();
              
         }
 
         // GET api/<DisciplineController>/5
         [HttpGet("{id}")]
-        public Task<DisciplineModel> Get(Guid id)
+        public async Task<DisciplineModel> GetAsync(Guid id)
         {
-            return _disciplineService.GetDisciplineByIdAsync(id);
+            return await _disciplineService.GetDisciplineByIdAsync(id);
         }
 
         // POST api/<DisciplineController>
         [HttpPost]
-        public void PostAsync([FromBody] DisciplineModel discipline)
+        public async Task PostAsync([FromBody] DisciplineModel discipline)
         {
-            _disciplineService.CreateDisciplineAsync(discipline);
+           await _disciplineService.CreateDisciplineAsync(discipline);
         }
 
         // PUT api/<DisciplineController>/5
