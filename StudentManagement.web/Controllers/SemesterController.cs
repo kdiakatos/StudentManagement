@@ -20,35 +20,30 @@ namespace StudentManagement.Api.Controllers
             _semesterService = semesterService;
         }
 
-        // GET: api/<SemesterController>
         [HttpGet]
         public async Task<List<SemesterModel>> GetGetAsync()
         {
             return await _semesterService.GetAllSemesterAsync();
         }
 
-        // GET api/<SemesterController>/5
         [HttpGet("{id}")]
         public async Task<SemesterModel> GetAsync(Guid id)
         {
             return await _semesterService.GetSemesterByIdAsync(id);
         }
 
-        // POST api/<SemesterController>
         [HttpPost]
         public async Task PostAsync([FromBody] SemesterModel semesterModel)
         {
             await _semesterService.CreateSemesterAsync(semesterModel);
         }
 
-        // PUT api/<SemesterController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task PutAsync([FromBody] SemesterModel semesterModel)
         {
             await _semesterService.UpdateSemesterAsync(semesterModel);
         }
 
-        // DELETE api/<SemesterController>/5
         [HttpDelete("{id}")]
         public async Task DeleteASync(Guid id)
         {

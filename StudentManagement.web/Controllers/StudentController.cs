@@ -21,35 +21,30 @@ namespace StudentManagement.Api.Controllers
         }
 
 
-        // GET: api/<StudentController>
         [HttpGet]
         public async Task<List<StudentModel>> GetGetAsync()
         {
             return await _studentService.GetAllStudentAsync();
         }
 
-        // GET api/<StudentController>/5
         [HttpGet("{id}")]
         public async Task<StudentModel> GetAsync(Guid id)
         {
             return await _studentService.GetStudentByIdAsync(id);
         }
 
-        // POST api/<StudentController>
         [HttpPost]
         public async Task PostAsync([FromBody] StudentModel studentModel)
         {
            await _studentService.CreateStudentAsync(studentModel);
         }
 
-        // PUT api/<StudentController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task PutAsync([FromBody] StudentModel studentModel)
         {
            await _studentService.UpdateStudentAsync(studentModel);
         }
 
-        // DELETE api/<StudentController>/5
         [HttpDelete("{id}")]
         public async Task DeleteASync(Guid id)
         {

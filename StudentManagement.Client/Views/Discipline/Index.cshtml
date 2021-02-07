@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StudentManagement.Client.Models.DisciplineViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="disciplineTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DisciplineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfesorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisciplineName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfesorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DisciplineId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DisciplineId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DisciplineId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#disciplineTable").dataTable();
+    });
+</script>

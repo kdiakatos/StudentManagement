@@ -22,7 +22,6 @@ namespace StudentManagement.Api.Controllers
         }
 
 
-        // GET: api/<DisciplineController>
         [HttpGet]
         public async Task<List<DisciplineModel>> GetAsync()
         {
@@ -30,28 +29,24 @@ namespace StudentManagement.Api.Controllers
              
         }
 
-        // GET api/<DisciplineController>/5
         [HttpGet("{id}")]
         public async Task<DisciplineModel> GetAsync(Guid id)
         {
             return await _disciplineService.GetDisciplineByIdAsync(id);
         }
 
-        // POST api/<DisciplineController>
         [HttpPost]
         public async Task PostAsync([FromBody] DisciplineModel discipline)
         {
            await _disciplineService.CreateDisciplineAsync(discipline);
         }
 
-        // PUT api/<DisciplineController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task PutAsync([FromBody] DisciplineModel discipline)
         {
            await _disciplineService.UpdateDisciplineAsync(discipline);
         }
 
-        // DELETE api/<DisciplineController>/5
         [HttpDelete("{id}")]
         public async Task DeleteAsync(Guid id)
         {
