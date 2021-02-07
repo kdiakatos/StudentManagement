@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StudentManagement.Client.Models.SemesterViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="semesterTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SemesterId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SemesterId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SemesterId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#semesterTable").dataTable();
+    });
+</script>
