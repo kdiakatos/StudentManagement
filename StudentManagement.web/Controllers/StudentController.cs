@@ -36,19 +36,26 @@ namespace StudentManagement.Api.Controllers
         [HttpPost]
         public async Task PostAsync([FromBody] StudentModel studentModel)
         {
-           await _studentService.CreateStudentAsync(studentModel);
+            await _studentService.CreateStudentAsync(studentModel);
         }
 
         [HttpPut]
         public async Task PutAsync([FromBody] StudentModel studentModel)
         {
-           await _studentService.UpdateStudentAsync(studentModel);
+            await _studentService.UpdateStudentAsync(studentModel);
         }
 
         [HttpDelete("{id}")]
         public async Task DeleteASync(Guid id)
         {
-           await _studentService.DeleteStudentAsync(id);
+            await _studentService.DeleteStudentAsync(id);
+        }
+
+        [HttpPost]
+        [Route("semester")]
+        public async Task PostStudentSemesterAsync([FromBody] StudentSemesterModel studentSemesterModel)
+        {
+            await _studentService.CreateStudentSemesterAsync(studentSemesterModel);
         }
     }
 }

@@ -98,5 +98,21 @@ namespace StudentManagement.Client.Services
             }
             return student;
         }
+
+        public async Task<StudentSemesterViewModel> AddStudentSemesterAsync(StudentSemesterViewModel studentSemester)
+        {
+            try
+            {
+                var jsonPayload = JsonConvert.SerializeObject(studentSemester);
+                var body = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+                var response = await Client.PostAsync("api/student/semester", body);
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return studentSemester;
+        }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using StudentManagement.BusinessLayer.Interfaces;
 using StudentManagement.BusinessLayer.Services;
 using StudentManagement.BusinessLayer.Utilities;
@@ -43,7 +44,12 @@ namespace StudentManagement.web
             services.AddScoped<ISemesterService, SemesterService>();
             services.AddScoped<IDisciplineService, DisciplineService>();
 
-            services.AddControllers();
+            services.AddControllers();//.AddJsonOptions(o => {
+            //    o.JsonSerializerOptions
+            //      .ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            //});
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentManagement.web", Version = "v1" });

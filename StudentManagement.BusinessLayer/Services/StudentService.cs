@@ -22,19 +22,10 @@ namespace StudentManagement.BusinessLayer.Services
 
         public async Task<StudentModel> CreateStudentAsync(StudentModel student)
         {
-            try
-            {
-                var studentEntity = _mapper.Map<Student>(student);
-                var result = await _studentRepository.CreateStudentAsynd(studentEntity);
-                student = _mapper.Map<StudentModel>(result);
-                return student;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            
+            var studentEntity = _mapper.Map<Student>(student);
+            var result = await _studentRepository.CreateStudentAsynd(studentEntity);
+            student = _mapper.Map<StudentModel>(result);
+            return student;
         }
 
         public async Task<StudentModel> UpdateStudentAsync(StudentModel student)
@@ -58,6 +49,14 @@ namespace StudentManagement.BusinessLayer.Services
         public async Task<List<StudentModel>> GetAllStudentAsync()
         {
             return _mapper.Map<List<StudentModel>>(await _studentRepository.GetAllStudentAsync());
+        }
+
+        public async Task<StudentSemesterModel> CreateStudentSemesterAsync(StudentSemesterModel studentSemester)
+        {
+            var studentSemesterEntity = _mapper.Map<StudentSemester>(studentSemester);
+            var result = await _studentRepository.CreateStudentSemesterAsync(studentSemesterEntity);
+            studentSemester = _mapper.Map<StudentSemesterModel>(result);
+            return studentSemester;
         }
     }
 }

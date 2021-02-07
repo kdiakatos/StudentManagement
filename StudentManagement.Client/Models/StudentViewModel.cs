@@ -22,5 +22,7 @@ namespace StudentManagement.Client.Models
         public DateTime DateOfBirth { get; set; }
 
         public ICollection<StudentSemesterViewModel> StudentSemesters { get; set; }
+
+        public ICollection<StudentDisciplineViewModel> StudentDisciplines { get; set; } = new List<StudentDisciplineViewModel>();
     }
 }

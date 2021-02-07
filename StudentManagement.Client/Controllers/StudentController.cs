@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using StudentManagement.Client.Models;
 using StudentManagement.Client.Services;
 using System;
@@ -9,9 +10,11 @@ namespace StudentManagement.Client.Controllers
     public class StudentController : Controller
     {
         private readonly StudentService _studentService;
+        private readonly SemesterService _semesterService;
 
-        public StudentController(StudentService studentService)
+        public StudentController(StudentService studentService, SemesterService semesterService)
         {
+            _semesterService = semesterService;
             _studentService = studentService;
         }
 
@@ -24,7 +27,20 @@ namespace StudentManagement.Client.Controllers
         public async Task<ActionResult> DetailsAsync(Guid id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
+            ViewData["SemesterId"] = new SelectList(await _semesterService.GetSemestersListAsync(), "SemesterId", "Name");
             return View(student);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> AssignAsync(Guid studentId, Guid semesterId)
+        {
+            var studentSemester = new StudentSemesterViewModel
+            {
+                StudentId = studentId,
+                SemesterId = semesterId
+            };
+            var result = await _studentService.AddStudentSemesterAsync(studentSemester);
+            return new JsonResult(result);
         }
 
         public ActionResult Create()

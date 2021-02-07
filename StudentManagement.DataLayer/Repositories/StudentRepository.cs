@@ -50,7 +50,14 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<List<Student>> GetAllStudentAsync()
         {
-            return await _smContext.Students.Include(x => x.StudentDisciplines).Include(x => x.StudentSemesters).ToListAsync();
+            return await _smContext.Students.ToListAsync();
+        }
+
+        public async Task<StudentSemester> CreateStudentSemesterAsync(StudentSemester studentSemester)
+        {
+            await _smContext.AddAsync(studentSemester);
+            await _smContext.SaveChangesAsync();
+            return studentSemester;
         }
     }
 }

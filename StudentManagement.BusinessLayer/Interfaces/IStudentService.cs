@@ -12,5 +12,7 @@ namespace StudentManagement.BusinessLayer.Interfaces
         Task<List<StudentModel>> GetAllStudentAsync();
         Task<StudentModel> GetStudentByIdAsync(Guid id);
         Task<StudentModel> UpdateStudentAsync(StudentModel student);
+
+        Task<StudentSemesterModel> CreateStudentSemesterAsync(StudentSemesterModel studentSemester);
     }
 }
