@@ -14,9 +14,6 @@ namespace StudentManagement.Client.Models
         [DisplayName("Profesor")]
         [Required]
         public string ProfesorName { get; set; }
-        [DisplayName("Score")]
-        [Required]
-        public int Score { get; set; }
         public ICollection<SemesterDisciplineViewModel> SemesterDisciplines { get; set; }
     }
 }

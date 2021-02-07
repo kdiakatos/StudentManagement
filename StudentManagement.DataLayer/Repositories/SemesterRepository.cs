@@ -38,7 +38,7 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<Semester> GetSemesterByIdAsync(Guid id)
         {
-            return await _smContext.Semesters.FirstOrDefaultAsync(x => x.SemesterId == id);
+            return await _smContext.Semesters.Include(x => x.SemesterDisciplines).Include(x => x.StudentSemesters).FirstOrDefaultAsync(x => x.SemesterId == id);
         }
 
         public async Task DeleteSemesterAsync(Guid id)
@@ -50,7 +50,7 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<List<Semester>> GetAllSemesterAsync()
         {
-            return await _smContext.Semesters.ToListAsync();
+            return await _smContext.Semesters.Include(x => x.SemesterDisciplines).Include(x => x.StudentSemesters).ToListAsync();
         }
     }
 }

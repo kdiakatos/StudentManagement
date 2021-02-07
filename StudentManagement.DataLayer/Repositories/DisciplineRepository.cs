@@ -37,7 +37,7 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<Discipline> GetDisciplineByIdAsync(Guid id)
         {
-            return await _smContext.Disciplines.FirstOrDefaultAsync(x => x.DisciplineId == id);
+            return await _smContext.Disciplines.Include(x => x.SemesterDisciplines).Include(x =>x.StudentDisciplines).FirstOrDefaultAsync(x => x.DisciplineId == id);
         }
 
         public async Task DeleteDisciplineAsync(Guid id)
@@ -49,7 +49,7 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<List<Discipline>> GetAllDisciplineAsync()
         {
-            return await _smContext.Disciplines.ToListAsync();
+            return await _smContext.Disciplines.Include(x => x.SemesterDisciplines).Include(x => x.StudentDisciplines).ToListAsync();
         }
     }
 }

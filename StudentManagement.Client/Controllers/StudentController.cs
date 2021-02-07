@@ -2,8 +2,6 @@
 using StudentManagement.Client.Models;
 using StudentManagement.Client.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace StudentManagement.Client.Controllers
