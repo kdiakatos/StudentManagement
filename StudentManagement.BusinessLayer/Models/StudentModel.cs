@@ -14,9 +14,11 @@ namespace StudentManagement.BusinessLayer.Models
         [DisplayName("Last Name")]
         [Required]
         public string LastName { get; set; }
+        [DisplayName("Full Name")]
+        public string FullName => FirstName + " " + LastName;
         [DisplayName("Date Of Birth")]
         [Required]
         public DateTime DateOfBirth { get; set; }
-        public ICollection<StudentSemesterModel> StudentSemesterModels { get; set; }
+        public ICollection<StudentSemesterModel> StudentSemesters { get; set; } = new List<StudentSemesterModel>();
     }
 }

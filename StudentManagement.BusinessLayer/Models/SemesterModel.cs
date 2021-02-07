@@ -16,7 +16,7 @@ namespace StudentManagement.BusinessLayer.Models
         [DisplayName("End Date")]
         [Required]
         public DateTime EndDate { get; set; }
-        public ICollection<SemesterDisciplineModel> SemesterDisciplineModels { get; set; }
-        public ICollection<StudentSemesterModel> StudentSemesterModels { get; set; }
+        public ICollection<SemesterDisciplineModel> SemesterDisciplines { get; set; } = new List<SemesterDisciplineModel>();
+        public ICollection<StudentSemesterModel> StudentSemesters { get; set; } = new List<StudentSemesterModel>();
     }
 }

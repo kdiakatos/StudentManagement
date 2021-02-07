@@ -21,8 +21,8 @@ namespace StudentManagement.Client.Models
 
         public DateTime EndDate { get; set; }
 
-        public ICollection<SemesterDisciplineViewModel> SemesterDisciplineModels { get; set; }
+        public ICollection<SemesterDisciplineViewModel> SemesterDisciplines { get; set; }
 
-        public ICollection<StudentSemesterViewModel> StudentSemesterModels { get; set; }
+        public ICollection<StudentSemesterViewModel> StudentSemesters { get; set; }
     }
 }

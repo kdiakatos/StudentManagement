@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace StudentManagement.BusinessLayer.Models
 {
-    public class SemesterDisciplineModel
+    public class StudentDisciplineModel
     {
         public Guid Id { get; set; }
         public SemesterModel Semester { get; set; }

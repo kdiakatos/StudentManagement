@@ -8,7 +8,7 @@ namespace StudentManagement.DataLayer.Entities
         public Guid DisciplineId { get; set; }
         public string DisciplineName { get; set; }
         public string ProfesorName { get; set; }
-        public int Score { get; set; }
-        public ICollection<SemesterDiscipline> SemesterDisciplines { get; set; }
+        public ICollection<SemesterDiscipline> SemesterDisciplines { get; set; } = new List<SemesterDiscipline>();
+        public ICollection<StudentDiscipline> StudentDisciplines { get; set; } = new List<StudentDiscipline>();
     }
 }

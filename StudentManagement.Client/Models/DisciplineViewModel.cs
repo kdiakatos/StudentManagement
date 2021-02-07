@@ -17,6 +17,6 @@ namespace StudentManagement.Client.Models
         [DisplayName("Score")]
         [Required]
         public int Score { get; set; }
-        public ICollection<SemesterDisciplineViewModel> SemesterDisciplineModels { get; set; }
+        public ICollection<SemesterDisciplineViewModel> SemesterDisciplines { get; set; }
     }
 }

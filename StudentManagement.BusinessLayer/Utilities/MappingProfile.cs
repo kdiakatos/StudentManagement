@@ -14,6 +14,7 @@ namespace StudentManagement.BusinessLayer.Utilities
 
             CreateMap<StudentSemester, StudentSemesterModel>().ReverseMap();
             CreateMap<SemesterDiscipline, SemesterDisciplineModel>().ReverseMap();
+            CreateMap<StudentDiscipline, StudentDisciplineModel>().ReverseMap();
         }
     }
 }

@@ -16,6 +16,6 @@ namespace StudentManagement.BusinessLayer.Models
         public string ProfesorName { get; set; }
         [Required]
         public int Score { get; set; }
-        public ICollection<SemesterDisciplineModel> SemesterDisciplineModels { get; set; }
+        public ICollection<SemesterDisciplineModel> SemesterDisciplines { get; set; } = new List<SemesterDisciplineModel>();
     }
 }
