@@ -38,7 +38,7 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<Student> GetStudentByIdAsync(Guid id)
         {
-            return await _smContext.Students.Include(x => x.StudentDisciplines).Include(x => x.StudentSemesters).FirstOrDefaultAsync(x => x.StudentId == id);
+            return await _smContext.Students.FirstOrDefaultAsync(x => x.StudentId == id);
         }
 
         public async Task DeleteStudentAsync(Guid id)

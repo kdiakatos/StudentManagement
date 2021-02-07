@@ -49,5 +49,12 @@ namespace StudentManagement.Api.Controllers
         {
             await _semesterService.DeleteSemesterAsync(id);
         }
+
+        [HttpGet]
+        [Route("Student/{id}")]
+        public async Task<List<SemesterModel>> GetSemesterByUserAsync(Guid id)
+        {
+            return await _semesterService.GetAllSemestersByStudentAsync(id);
+        }
     }
 }

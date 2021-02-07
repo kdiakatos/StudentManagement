@@ -12,5 +12,6 @@ namespace StudentManagement.BusinessLayer.Interfaces
         Task<List<SemesterModel>> GetAllSemesterAsync();
         Task<SemesterModel> GetSemesterByIdAsync(Guid id);
         Task<SemesterModel> UpdateSemesterAsync(SemesterModel semester);
+        Task<List<SemesterModel>> GetAllSemestersByStudentAsync(Guid studentId);
     }
 }

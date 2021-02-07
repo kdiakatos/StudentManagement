@@ -3,6 +3,7 @@ using StudentManagement.DataLayer.Entities;
 using StudentManagement.DataLayer.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StudentManagement.DataLayer.Repositories
@@ -38,7 +39,7 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<Semester> GetSemesterByIdAsync(Guid id)
         {
-            return await _smContext.Semesters.Include(x => x.SemesterDisciplines).Include(x => x.StudentSemesters).FirstOrDefaultAsync(x => x.SemesterId == id);
+            return await _smContext.Semesters.FirstOrDefaultAsync(x => x.SemesterId == id);
         }
 
         public async Task DeleteSemesterAsync(Guid id)
@@ -50,7 +51,13 @@ namespace StudentManagement.DataLayer.Repositories
 
         public async Task<List<Semester>> GetAllSemesterAsync()
         {
-            return await _smContext.Semesters.Include(x => x.SemesterDisciplines).Include(x => x.StudentSemesters).ToListAsync();
+            return await _smContext.Semesters.ToListAsync();
+        }
+
+        public async Task<List<StudentSemester>> GetAllSemestersByStudentAsync(Guid studentId)
+        {
+            var result = await _smContext.StudentSemesters.Where(x => x.StudentId == studentId).ToListAsync();
+            return result;
         }
     }
 }

@@ -98,5 +98,27 @@ namespace StudentManagement.Client.Services
             }
             return semester;
         }
+
+        public async Task<List<SemesterViewModel>> GetSemestersByStudentListAsync(Guid studentId)
+        {
+            var semestersList = new List<SemesterViewModel>();
+            try
+            {
+
+                var response = await Client.GetAsync("api/Semester/Student/" + studentId);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var result = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<SemesterViewModel>>(jsonResponse, options);
+                    semestersList = result.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return semestersList;
+        }
     }
 }

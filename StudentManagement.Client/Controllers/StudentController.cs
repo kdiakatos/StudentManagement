@@ -31,6 +31,13 @@ namespace StudentManagement.Client.Controllers
             return View(student);
         }
 
+        [HttpGet]
+        public async Task<JsonResult> GetSemestersByStudentAsync(Guid id)
+        {
+            var result = await _semesterService.GetSemestersByStudentListAsync(id);
+            return new JsonResult(result);
+        }
+
         [HttpPost]
         public async Task<JsonResult> AssignAsync(Guid studentId, Guid semesterId)
         {
@@ -86,25 +93,5 @@ namespace StudentManagement.Client.Controllers
             }
             return View(student);
         }
-
-        //public async Task<ActionResult> DeleteAsync(Guid? id)
-        //{
-        //    if (id == null)
-        //        return NotFound();
-
-        //    var student = await _studentService.GetStudentByIdAsync(id.Value);
-        //    if (student == null)
-        //        return NotFound();
-
-        //    return View(student);
-        //}
-
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(Guid id)
-        //{
-        //    await _studentService.DeleteStudentAsync(id);
-        //    return RedirectToAction(nameof(Index));
-        //}
     }
 }

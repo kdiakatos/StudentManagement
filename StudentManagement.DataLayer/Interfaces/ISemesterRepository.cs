@@ -12,5 +12,6 @@ namespace StudentManagement.DataLayer.Interfaces
         Task<Semester> GetSemesterByIdAsync(Guid id);
         Task<Semester> UpdateSemesterAsync(Semester semester);
         Task<List<Semester>> GetAllSemesterAsync();
+        Task<List<StudentSemester>> GetAllSemestersByStudentAsync(Guid studentId);
     }
 }

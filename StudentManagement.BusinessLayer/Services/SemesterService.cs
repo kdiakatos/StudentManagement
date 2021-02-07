@@ -5,6 +5,7 @@ using StudentManagement.DataLayer.Entities;
 using StudentManagement.DataLayer.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StudentManagement.BusinessLayer.Services
@@ -49,6 +50,23 @@ namespace StudentManagement.BusinessLayer.Services
         public async Task<List<SemesterModel>> GetAllSemesterAsync()
         {
             return _mapper.Map<List<SemesterModel>>(await _semesterRepository.GetAllSemesterAsync());
+        }
+
+        public async Task<List<SemesterModel>> GetAllSemestersByStudentAsync(Guid studentId)
+        {
+            var result = _mapper.Map<List<StudentSemesterModel>>(await _semesterRepository.GetAllSemestersByStudentAsync(studentId));
+            var semesters = _mapper.Map<List<SemesterModel>>(await _semesterRepository.GetAllSemesterAsync());
+            var finalResult = new List<SemesterModel>();
+            foreach (var item in result)
+            {
+                var semester = new SemesterModel
+                {
+                    SemesterId = item.SemesterId,
+                    Name = semesters.FirstOrDefault(x => x.SemesterId == item.SemesterId).Name
+                };
+                finalResult.Add(semester);
+            }
+            return finalResult;
         }
     }
 }
